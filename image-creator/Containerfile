@@ -1,0 +1,27 @@
+# Use your custom Python 3.11 environment as the base image
+FROM docker.io/library/python:3.11.3
+
+COPY requirements.txt /tmp/requirements.txt
+
+RUN pip3 install -r /tmp/requirements.txt
+
+RUN rm /tmp/requirements.txt
+
+# Install curl and other dependencies
+RUN apt-get update && apt-get install -y curl gnupg
+
+# Download and install code-server
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+
+RUN code-server --install-extension KevinRose.vsc-python-indent && \
+    code-server --install-extension ms-python.python && \
+    code-server --install-extension njpwerner.autodocstring && \
+    code-server --install-extension donjayamanne.python-environment-manager && \
+    code-server --install-extension donjayamanne.python-extension-pack && \
+    code-server --install-extension batisteo.vscode-django && \
+    code-server --install-extension downloaded-VisualStudioExptTeam.intellicode-api-usage-examples.vsix && \
+    code-server --install-extension VisualStudioExptTeam.vscodeintellicode.vsix && \
+    code-server --install-extension esbenp.prettier-vscode && \
+    code-server --install-extension ms-vscode-remote.remote-containers.vsix && \
+    code-server --install-extension downloaded-ms-python.vscode-pylance.vsix && \
+    code-server --install-extension wholroyd.jinja 
