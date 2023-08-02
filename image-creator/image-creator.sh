@@ -17,10 +17,11 @@ declare -A extensions=(
 
 for key in "${!extensions[@]}" 
 do
-
-    wget -nv -w 10 https://marketplace.visualstudio.com/_apis/public/gallery/publishers/${extensions[$key]}/vsextensions/$key/latest/vspackage
-    mv vspackage ${extensions[$key]}.$key-latest.vsix.gz
-    gunzip -v ${extensions[$key]}.$key-latest.vsix.gz
+    FILE=./${extensions[$key]}.$key-latest.vsix
+    if [ ! -f $FILE ]; then
+        wget -nv -w 10 https://marketplace.visualstudio.com/_apis/public/gallery/publishers/${extensions[$key]}/vsextensions/$key/latest/vspackage
+        mv vspackage ${extensions[$key]}.$key-latest.vsix.gz
+        gunzip -v ${extensions[$key]}.$key-latest.vsix.gz
 done
 
 podman build -t vscodeimage .
