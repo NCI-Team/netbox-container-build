@@ -18,10 +18,12 @@ declare -A extensions=(
 for key in "${!extensions[@]}" 
 do
     FILE=./${extensions[$key]}.$key-latest.vsix
-    if [ ! -f $FILE ]; then
-        wget -nv -w 10 https://marketplace.visualstudio.com/_apis/public/gallery/publishers/${extensions[$key]}/vsextensions/$key/latest/vspackage
+    while [ ! -f $FILE ];
+    do
+        wget -nv -w 10 --random-wait --continue https://marketplace.visualstudio.com/_apis/public/gallery/publishers/${extensions[$key]}/vsextensions/$key/latest/vspackage
         mv vspackage ${extensions[$key]}.$key-latest.vsix.gz
         gunzip -v ${extensions[$key]}.$key-latest.vsix.gz
+    done
 done
 
-podman build -t vscodeimage .
+podman build --no-cache -t vscodeimage .
