@@ -3,18 +3,19 @@ FROM docker.io/library/python:3.11.3
 
 COPY requirements.txt /tmp/requirements.txt
 
-COPY ./KevinRose.vsc-python-indent-latest.vsix ./
-COPY ./ms-python.python-latest.vsix ./
-COPY ./njpwerner.autodocstring-latest.vsix ./
-COPY ./donjayamanne.python-environment-manager-latest.vsix ./
-COPY ./donjayamanne.python-extension-pack-latest.vsix ./
-COPY ./batisteo.vscode-django-latest.vsix ./
-COPY ./VisualStudioExptTeam.intellicode-api-usage-examples-latest.vsix ./
-COPY ./VisualStudioExptTeam.vscodeintellicode-latest.vsix ./
-COPY ./esbenp.prettier-vscode-latest.vsix ./
-COPY ./ms-vscode-remote.remote-containers-latest.vsix ./
-COPY ./ms-python.vscode-pylance-latest.vsix ./
-COPY ./wholroyd.jinja-latest.vsix  ./
+COPY ./ms-python.vscode-pylance-2023.5.21.vsix ./
+COPY ./VisualStudioExptTeam.vscodeintellicode-1.2.30.vsix ./
+COPY ./VisualStudioExptTeam.intellicode-api-usage-examples-0.2.7.vsix ./
+COPY ./ms-vscode-remote.remote-containers-0.293.0.vsix ./
+COPY ./KevinRose.vsc-python-indent-1.18.0.vsix ./
+COPY ./ms-python.python-2023.9.11311005.vsix ./
+COPY ./njpwerner.autodocstring-0.6.1.vsix ./
+COPY ./donjayamanne.python-environment-manager-1.0.4.vsix ./
+COPY ./donjayamanne.python-extension-pack-1.7.0.vsix ./
+COPY ./batisteo.vscode-django-1.10.0.vsix ./
+COPY ./esbenp.prettier-vscode-9.12.0.vsix ./
+COPY ./wholroyd.jinja-0.0.8.vsix ./
+COPY ./ms-python.autopep8-2023.6.0.vsix ./
 
 RUN pip3 install -r /tmp/requirements.txt
 
@@ -24,17 +25,18 @@ RUN rm /tmp/requirements.txt
 RUN apt-get update && apt-get install -y curl gnupg
 
 # Download and install code-server
-RUN curl -fsSL https://code-server.dev/install.sh | sh
+RUN curl -fsSL https://code-server.dev/install.sh | sh -s -- --version=4.13.0
 
-RUN code-server --install-extension ./KevinRose.vsc-python-indent-latest.vsix && \
-    code-server --install-extension ./ms-python.python-latest.vsix && \
-    code-server --install-extension ./njpwerner.autodocstring-latest.vsix && \
-    code-server --install-extension ./donjayamanne.python-environment-manager-latest.vsix && \
-    code-server --install-extension ./donjayamanne.python-extension-pack-latest.vsix && \
-    code-server --install-extension ./batisteo.vscode-django-latest.vsix && \
-    code-server --install-extension ./VisualStudioExptTeam.intellicode-api-usage-examples-latest.vsix && \
-    code-server --install-extension ./VisualStudioExptTeam.vscodeintellicode-latest.vsix && \
-    code-server --install-extension ./esbenp.prettier-vscode-latest.vsix && \
-    code-server --install-extension ./ms-vscode-remote.remote-containers-latest.vsix && \
-    code-server --install-extension ./ms-python.vscode-pylance-latest.vsix && \
-    code-server --install-extension ./wholroyd.jinja-latest.vsix
+RUN code-server --install-extension ms-python.vscode-pylance-2023.5.21.vsix && \
+    code-server --install-extension VisualStudioExptTeam.vscodeintellicode-1.2.30.vsix && \
+    code-server --install-extension VisualStudioExptTeam.intellicode-api-usage-examples-0.2.7.vsix && \
+    code-server --install-extension ms-vscode-remote.remote-containers-0.293.0.vsix && \
+    code-server --install-extension KevinRose.vsc-python-indent-1.18.0.vsix && \
+    code-server --install-extension ms-python.python-2023.9.11311005.vsix && \
+    code-server --install-extension njpwerner.autodocstring-0.6.1.vsix && \
+    code-server --install-extension donjayamanne.python-environment-manager-1.0.4.vsix && \
+    code-server --install-extension donjayamanne.python-extension-pack-1.7.0.vsix && \
+    code-server --install-extension batisteo.vscode-django-1.10.0.vsix && \
+    code-server --install-extension esbenp.prettier-vscode-9.12.0.vsix && \
+    code-server --install-extension wholroyd.jinja-0.0.8.vsix && \
+    code-server --install-extension ms-python.autopep8-2023.6.0.vsix
