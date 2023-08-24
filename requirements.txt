@@ -1,5 +1,7 @@
 bcrypt==4.0.1
 blinker==1.6.2
+boto3==1.28.31
+botocore==1.31.31
 certifi==2023.5.7
 cffi==1.15.1
 charset-normalizer==3.1.0
@@ -11,6 +13,7 @@ gunicorn==20.1.0
 idna==3.4
 itsdangerous==2.1.2
 Jinja2==3.1.2
+jmespath==1.0.1
 jsonify==0.5
 junos-eznc==2.6.7
 lxml==4.9.2
@@ -24,6 +27,7 @@ netutils==1.4.1
 nornir==3.3.0
 nornir-napalm==0.4.0
 ntc-templates==3.3.0
+numpy==1.25.1
 paramiko==3.1.0
 ply==3.11
 pyasn1==0.4.8
@@ -35,11 +39,13 @@ pyparsing==3.0.9
 pyserial==3.5
 pysmi==0.3.4
 pysnmp==4.4.12
+python-dateutil==2.8.2
 python-dotenv==1.0.0
 PyYAML==6.0
 requests==2.30.0
 ruamel.yaml==0.17.24
 ruamel.yaml.clib==0.2.7
+s3transfer==0.6.2
 scp==0.14.5
 six==1.16.0
 tenacity==8.2.2
@@ -48,6 +54,6 @@ transitions==0.9.0
 ttp==0.9.4
 ttp-templates==0.3.5
 typing_extensions==4.5.0
-urllib3==2.0.2
+urllib3==1.26.16
 Werkzeug==2.3.4
 yamlordereddictloader==0.4.0
