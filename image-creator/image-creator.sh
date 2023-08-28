@@ -16,9 +16,14 @@ declare -A extensions=(
 ["autopep8-2023.6.0"]="ms-python"
 )
 
+if [ ! -d "./extensions" ]; then
+  mkdir ./extensions
+fi
+cd ./extensions
 
 for key in "${!extensions[@]}" 
 do
+    
     FILE=./${extensions[$key]}.$key.vsix
     while [ ! -f $FILE ];
     do 
@@ -30,5 +35,7 @@ do
         gunzip -v ${extensions[$key]}.$key.vsix.gz
     done
 done
+
+cd ..
 
 podman build --no-cache -t vscodeimage .
