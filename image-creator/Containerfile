@@ -3,40 +3,14 @@ FROM docker.io/library/python:3.11.3
 
 COPY requirements.txt /tmp/requirements.txt
 
-COPY ./ms-python.vscode-pylance-2023.5.21.vsix ./
-COPY ./VisualStudioExptTeam.vscodeintellicode-1.2.30.vsix ./
-COPY ./VisualStudioExptTeam.intellicode-api-usage-examples-0.2.7.vsix ./
-COPY ./ms-vscode-remote.remote-containers-0.293.0.vsix ./
-COPY ./KevinRose.vsc-python-indent-1.18.0.vsix ./
-COPY ./ms-python.python-2023.9.11311005.vsix ./
-COPY ./njpwerner.autodocstring-0.6.1.vsix ./
-COPY ./donjayamanne.python-environment-manager-1.0.4.vsix ./
-COPY ./donjayamanne.python-extension-pack-1.7.0.vsix ./
-COPY ./batisteo.vscode-django-1.10.0.vsix ./
-COPY ./esbenp.prettier-vscode-9.12.0.vsix ./
-COPY ./wholroyd.jinja-0.0.8.vsix ./
-COPY ./ms-python.autopep8-2023.6.0.vsix ./
-
 RUN pip3 install -r /tmp/requirements.txt
 
 RUN rm /tmp/requirements.txt
 
-# Install curl and other dependencies
-RUN apt-get update && apt-get install -y curl gnupg
+RUN mkdir /opt/vscode-server/
 
-# Download and install code-server
-RUN curl -fsSL https://code-server.dev/install.sh | sh -s -- --version=4.13.0
+COPY extensions /opt/vscode-server/
 
-RUN code-server --install-extension ms-python.vscode-pylance-2023.5.21.vsix && \
-    code-server --install-extension VisualStudioExptTeam.vscodeintellicode-1.2.30.vsix && \
-    code-server --install-extension VisualStudioExptTeam.intellicode-api-usage-examples-0.2.7.vsix && \
-    code-server --install-extension ms-vscode-remote.remote-containers-0.293.0.vsix && \
-    code-server --install-extension KevinRose.vsc-python-indent-1.18.0.vsix && \
-    code-server --install-extension ms-python.python-2023.9.11311005.vsix && \
-    code-server --install-extension njpwerner.autodocstring-0.6.1.vsix && \
-    code-server --install-extension donjayamanne.python-environment-manager-1.0.4.vsix && \
-    code-server --install-extension donjayamanne.python-extension-pack-1.7.0.vsix && \
-    code-server --install-extension batisteo.vscode-django-1.10.0.vsix && \
-    code-server --install-extension esbenp.prettier-vscode-9.12.0.vsix && \
-    code-server --install-extension wholroyd.jinja-0.0.8.vsix && \
-    code-server --install-extension ms-python.autopep8-2023.6.0.vsix
+WORKDIR /opt/vscode-server/
+
+CMD [ "/bin/bash", "-c", "/opt/vscode-server/extensions.sh" ]
