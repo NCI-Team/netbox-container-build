@@ -21,6 +21,8 @@ if [ ! -d "./extensions" ]; then
 fi
 cd ./extensions
 
+echo "#! /bin/bash" > extensions.sh
+
 for key in "${!extensions[@]}" 
 do
     
@@ -34,6 +36,7 @@ do
         mv vspackage ${extensions[$key]}.$key.vsix.gz
         gunzip -v ${extensions[$key]}.$key.vsix.gz
     done
+    echo code --install-extension ./${extensions[$key]}.$key.vsix >> extensions.sh
 done
 
 cd ..
