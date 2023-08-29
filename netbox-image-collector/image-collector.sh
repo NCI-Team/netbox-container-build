@@ -1,5 +1,4 @@
 #!/bin/bash
-
 declare -A images=(
 ["public.ecr.aws/docker/library/redis"]="7.0.5-alpine3.16"
 ["public.ecr.aws/docker/library/haproxy"]="2.5.9-alpine3.16"
@@ -12,7 +11,7 @@ do
     podman pull -q "$key:${images[$key]}"
 done
 
-echo FROM haproxy > ./Containerfile
+echo FROM public.ecr.aws/docker/library/haproxy:2.5.9-alpine3.16 > ./Containerfile
 echo USER root >> ./Containerfile
 echo RUN apk add postgresql bash >> ./Containerfile
 
