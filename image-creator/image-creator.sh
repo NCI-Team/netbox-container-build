@@ -22,7 +22,7 @@ fi
 cd ./extensions
 
 echo "#! /bin/bash" > extensions.sh
-
+chmod +x extensions.sh
 for key in "${!extensions[@]}" 
 do
     
@@ -42,3 +42,4 @@ done
 cd ..
 
 podman build --no-cache -t vscodeimage .
+podman save > vscode-image.tar vscodeimage:latest
