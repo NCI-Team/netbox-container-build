@@ -8,14 +8,14 @@ declare -A images=(
 
 for key in "${!images[@]}" 
 do
-    podman pull -q "$key:${images[$key]}"
+    podman pull "$key:${images[$key]}"
 done
 
 echo FROM public.ecr.aws/docker/library/haproxy:2.5.9-alpine3.16 > ./Containerfile
 echo USER root >> ./Containerfile
 echo RUN apk add postgresql bash >> ./Containerfile
 
-podman build -t haproxy-pg-bash:2.5.9-alpine3.16 .
+podman build --no-cache -t haproxy-pg-bash:2.5.9-alpine3.16 .
 
 images["haproxy-pg-bash"]="${images["public.ecr.aws/docker/library/haproxy"]}"
 unset images["public.ecr.aws/docker/library/haproxy"]
@@ -30,3 +30,5 @@ done
 
 # Execute the command
 $command
+
+rm Containerfile
