@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -f netbox-images.tar
+
 haproxy="public.ecr.aws/docker/library/haproxy"
 haproxy_tag="2.5.9-alpine3.16"
 
