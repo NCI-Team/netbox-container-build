@@ -35,4 +35,4 @@ done
 # Execute the command
 $command
 
-rm Containerfile
+rm ./Containerfile
