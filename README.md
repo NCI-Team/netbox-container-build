@@ -39,7 +39,7 @@ When we want to upgrade our Netbox we will need just to change the tags to the v
 python-prod-image-creator contains two scripts: `requirementsfile-builder.sh` and `prod-image-creator.sh`.
 The main purpose of this project is to create our podman image for the `netbox-backend flask`.
 
-
+----
 ### requirementsfile-builder.sh
 ----
 
@@ -48,7 +48,7 @@ This bash script purpose is to create a `requirements.txt` file for the image.
 The `requirements.txt` file has all the python libraries we need for the netbox-backend flask to work.
 
 Whenever we want a new python library we don't want to download it just like that because we will need to download all of it's dependencies one by one which can be very annoying.
-With this script, when run it will prompt the user what library he wants, and then it will run and install all the needed libraries and makes the 'requirements.txt' file
+With this script, when run it will prompt the user what library he wants, and then it will run and install all the needed libraries and makes the `requirements.txt` file
 
 #### How to Run
 
@@ -58,8 +58,11 @@ With this script, when run it will prompt the user what library he wants, and th
 Then write the exact name of the new python library we want.
 ```
 
+---
+
 ### prod-image-creator.sh
-----
+
+---
 
 #### How to Run
 
@@ -78,7 +81,7 @@ python-dev-image-creator contains 3 files in it:
 3. download-vs-code-server.sh
 
 The only file we will update and edit is the `dev-image-creator.sh` because it has the extensions we want on our dev-netbox-backend.
-To add new extensions all you need to do it to add an extension for path and it tag into the `extensions` dictonary like that:
+To add new extensions all you need to do it to add an extension and it tag as a `key` and the creator as a `value` into the `extensions` dictonary like that:
 ```
 ["vscode-pylance-2023.5.21"]="ms-python"
 ```
