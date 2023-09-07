@@ -4,12 +4,11 @@ This project is made-up of 3 parts that are focused on helping us make an easy a
 
 
 
- # netbox-image-collector
+ ## netbox-image-collector
 
  netbox-image-collector is a bash script to gather all the images needed to our Netbox and saves them into a tar file.
 
-Images
----
+### Images
 Currently we have 4 images we need for our Netbox:
 1. public.ecr.aws/docker/library/redis-7.0.5-alpine3.16
 2. docker.io/netboxcommunity/netbox-v3.5
@@ -17,26 +16,25 @@ Currently we have 4 images we need for our Netbox:
 4. public.ecr.aws/docker/library/haproxy-2.5.9-alpine3.16 (that we install postgres and bash on it).
 
 
-How to run
----
+### How to Run
+
 
  All you need is to run the script:
 ```
  ./image-collector.sh
 ```
 
-How to Upgrade The Images
-----
+### How to Upgrade The Images
 
 When we want to upgrade our netbox we will need just to change the tags to the versions we want and run the script.
 
 ------------------
 
-# python-prod-image-creator
+## python-prod-image-creator
 python-prod-image-creator contains two scripts: `requirementsfile-builder.sh` and `prod-image-creator.sh`.
 The main purpose of this project is to create our image for the `netbox-backend flask`.
 
-requirementsfile-builder.sh
+### requirementsfile-builder.sh
 ----
 
 This bash script is to create a requirements.txt file for the image. T
@@ -45,17 +43,19 @@ The requirements.txt file has all the python libraries we need for the netbox-ba
 Whenever we want a new python library we don't want to download it just like that because we will need to download all of it's dependencies one by one two which can be very annoying.
 With this script, when ran it will prompt the user what library he wants, and then it will run and install all the needed libraries and makes the requirements.txt file
 
-How to Run
-----
+### How to Run
+
 ```
 ./requirementsfile-builder.sh
 
 Then write the exact name of the new python library we want.
 ```
 
-
-How to Run
+### prod-image-creator.sh
 ----
+
+### How to Run
+
 
 In order to get the tar of the image of the netbox-backend flask we need to run prod-image-creator.sh:
 
@@ -63,7 +63,29 @@ In order to get the tar of the image of the netbox-backend flask we need to run 
 ./prod-image-creator.sh
 ```
 
+## python-dev-image-creator
 
+python-dev-image-creator contains 3 files in it:
+1. Containerfile
+2. dev-image-creator.sh
+3. download-vs-code-server.sh
+
+The only file we will update and edit is the `dev-image-creator.sh` because it has the extensions we want on our dev-netbox-backend.
+To add new extensions all you need to do it to add an extension for path and it tag into the `extensions` dictonary like that:
+```
+["vscode-pylance-2023.5.21"]="ms-python"
+```
+
+### How to Run
+
+This will be ran only when we add/upgrade our extensions or when we add new python libraries.
+
+> [!IMPORTANT]
+> THIS WILL BE RUN ONLY AFTER RUNNING `prod-image-creator.sh` BECAUSE IT DEPENDS ON IT
+
+```
+./dev-image-creator.sh
+```
 
 
 
