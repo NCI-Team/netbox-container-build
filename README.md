@@ -21,9 +21,9 @@ How to run
 ---
 
  All you need is to run the script:
-
- `./image-collector.sh`
-
+```
+ ./image-collector.sh
+```
 
 How to Upgrade The Images
 ----
