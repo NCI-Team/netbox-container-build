@@ -5,8 +5,8 @@ Those images are used in our Netbox project, one for each environment.
 
 > [!NOTE]
 > It is important to note that 
-> `netbox-image-collector` is only run when we > want to upgrade our Netbox containers.
-> How ever when we add a new python moudle we both `python-prod-image-creator` and `python-dev-image-creator` in their entirety.
+> `netbox-image-collector` is only run when we  want to upgrade our Netbox containers.
+> However when we add a new python moudle we run both `python-prod-image-creator` and `python-dev-image-creator` in their entirety.
 
 
  ## netbox-image-collector
