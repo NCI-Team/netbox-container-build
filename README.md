@@ -1,12 +1,17 @@
 # netbox-container-build
 This project is made-up of 3 parts that are focused on helping us make an easy and comfortable way to create Podman images for whitening.
 
+Those images are used in our Netbox project, one for each environment.
 
+> [!NOTE]
+> It is important to note that 
+> `netbox-image-collector` is only run when we > want to upgrade our Netbox containers.
+> How ever when we add a new python moudle we both `python-prod-image-creator` and `python-dev-image-creator` in their entirety.
 
 
  ## netbox-image-collector
 
- netbox-image-collector is a bash script to gather all the images needed to our Netbox and saves them into a tar file.
+ netbox-image-collector is a bash script to gather all the images needed to our Netbox and saves them into a tar file which is whiten and then loaded into our Netbox virtual machine.
 
 ### Images
 Currently we have 4 images we need for our Netbox:
@@ -26,22 +31,24 @@ Currently we have 4 images we need for our Netbox:
 
 ### How to Upgrade The Images
 
-When we want to upgrade our netbox we will need just to change the tags to the versions we want and run the script.
+When we want to upgrade our Netbox we will need just to change the tags to the versions we want and run the script.
 
 ------------------
 
 ## python-prod-image-creator
 python-prod-image-creator contains two scripts: `requirementsfile-builder.sh` and `prod-image-creator.sh`.
-The main purpose of this project is to create our image for the `netbox-backend flask`.
+The main purpose of this project is to create our podman image for the `netbox-backend flask`.
+
 
 ### requirementsfile-builder.sh
 ----
 
-This bash script is to create a requirements.txt file for the image. T
-The requirements.txt file has all the python libraries we need for the netbox-backend flask to work.
+This bash script purpose is to create a `requirements.txt` file for the image.
 
-Whenever we want a new python library we don't want to download it just like that because we will need to download all of it's dependencies one by one two which can be very annoying.
-With this script, when ran it will prompt the user what library he wants, and then it will run and install all the needed libraries and makes the requirements.txt file
+The `requirements.txt` file has all the python libraries we need for the netbox-backend flask to work.
+
+Whenever we want a new python library we don't want to download it just like that because we will need to download all of it's dependencies one by one which can be very annoying.
+With this script, when run it will prompt the user what library he wants, and then it will run and install all the needed libraries and makes the 'requirements.txt' file
 
 #### How to Run
 
