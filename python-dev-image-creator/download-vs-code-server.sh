@@ -4,7 +4,7 @@ set -e
 
 # Auto-Get the latest commit sha via command line.
 get_latest_release() {
-    tag=$(curl --silent "https://api.github.com/repos/${1}/releases/latest" | # Get latest release from GitHub API
+    tag=$(curl --silent "https://api.github.com/repos/${1}/releases/tags/1.78.0" | # Get latest release from GitHub API
         grep '"tag_name":'                                              | # Get tag line
     sed -E 's/.*"([^"]+)".*/\1/'                                    ) # Pluck JSON value
     
