@@ -4,7 +4,7 @@ set -e
 
 # Auto-Get the latest commit sha via command line.
 get_latest_release() {
-    tag=$(curl --silent "https://api.github.com/repos/${1}/releases/tags/1.78.0" | # Get latest release from GitHub API
+    tag=$(curl --silent "https://api.github.com/repos/${1}/releases/tags/${2}" | # Get latest release from GitHub API
         grep '"tag_name":'                                              | # Get tag line
     sed -E 's/.*"([^"]+)".*/\1/'                                    ) # Pluck JSON value
     
@@ -46,7 +46,8 @@ fi
 archive="vscode-server-linux-${ARCH}.tar.gz"
 owner='microsoft'
 repo='vscode'
-commit_sha=$(get_latest_release "${owner}/${repo}")
+version='1.78.0'
+commit_sha=$(get_latest_release "${owner}/${repo}" "${version}")
 
 if [ -n "${commit_sha}" ]; then
     echo "will attempt to download VS Code Server version = '${commit_sha}'"
