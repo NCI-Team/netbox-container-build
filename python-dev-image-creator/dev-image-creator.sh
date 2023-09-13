@@ -19,7 +19,7 @@ declare -A extensions=(
 if [ ! -d "./extensions" ]; then
     mkdir ./extensions
 fi
-mv ./download-vs-code-server.sh ./extensions
+cp ./download-vs-code-server.sh ./extensions
 cd ./extensions
 
 for key in "${!extensions[@]}"
