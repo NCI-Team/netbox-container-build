@@ -8,7 +8,6 @@ declare -A extensions=(
     ["vsc-python-indent-1.18.0"]="KevinRose"
     ["python-2023.9.11311005"]="ms-python"
     ["autodocstring-0.6.1"]="njpwerner"
-    ["python-environment-manager-1.0.4"]="donjayamanne"
     ["python-extension-pack-1.7.0"]="donjayamanne"
     ["vscode-django-1.10.0"]="batisteo"
     ["prettier-vscode-9.12.0"]="esbenp"
