@@ -41,7 +41,6 @@ The main purpose of this project is to create our podman image for the `netbox-b
 
 ----
 ### requirementsfile-builder.sh
-----
 
 This bash script purpose is to create a `requirements.txt` file for the image.
 
