@@ -46,8 +46,7 @@ This bash script purpose is to create a `requirements.txt` file for the image.
 
 The `requirements.txt` file has all the python libraries we need for the netbox-backend flask to work.
 
-Whenever we want a new python library we don't want to download it just like that because we will need to download all of it's dependencies one by one which can be very annoying.
-With this script, when run it will prompt the user what library he wants, and then it will run and install all the needed libraries and makes the `requirements.txt` file
+Whenever we want a new python module in our vscode environment we run this script. The script will prompt the user with what module he wants to install, and then it will run and install all the needed dependendies and will make the `requirements.txt` file with all the modules.
 
 #### How to Run
 
