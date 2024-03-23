@@ -1,5 +1,5 @@
 # Use your custom Python 3.11 environment as the base image
-FROM localhost/python-evn-3-11:latest
+FROM localhost/python-evn-3-11
 
 RUN mkdir /opt/vscode-server/
 
@@ -7,4 +7,7 @@ COPY extensions /opt/vscode-server/
 
 WORKDIR /opt/vscode-server/
 
-CMD [ "/bin/bash", "-c", "/opt/vscode-server/extensions.sh" ]
+RUN chmod +x ./download-vs-code-server.sh
+
+RUN ./download-vs-code-server.sh
+
