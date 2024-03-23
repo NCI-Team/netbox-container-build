@@ -42,7 +42,6 @@ pyserial==3.5
 pysmi==0.3.4
 pysnmp==4.4.12
 pysnmp-mibs==0.1.6
-<<<<<<< HEAD
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 PyYAML==6.0.1
@@ -50,15 +49,6 @@ requests==2.31.0
 ruamel.yaml==0.18.6
 ruamel.yaml.clib==0.2.8
 s3transfer==0.10.1
-=======
-python-dateutil==2.8.2
-python-dotenv==1.0.0
-PyYAML==6.0
-requests==2.30.0
-ruamel.yaml==0.17.24
-ruamel.yaml.clib==0.2.7
-s3transfer==0.6.2
->>>>>>> 8f0773bcc493040326efb04b9d8bbbfa4f48b341
 scp==0.14.5
 six==1.16.0
 tenacity==8.2.3
