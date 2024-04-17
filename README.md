@@ -25,13 +25,13 @@ Those images are used in our Netbox project, one for each environment.
 
 When we want to upgrade our Netbox we will need just to change the tags to the versions we want and run the script.
 
-------------------
+
 
 ## python-prod-image-creator
 python-prod-image-creator contains two scripts: `requirementsfile-builder.sh` and `prod-image-creator.sh`.
 The main purpose of this project is to create our podman image for the `netbox-backend flask`.
 
-----
+
 ### requirementsfile-builder.sh
 
 This bash script purpose is to create a `requirements.txt` file for the image.
@@ -47,7 +47,6 @@ The `requirements.txt` file has all the python libraries we need for the netbox-
 Then write the exact name of the new python library we want.
 ```
 
----
 
 ### prod-image-creator.sh
 
