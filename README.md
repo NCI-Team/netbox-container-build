@@ -13,16 +13,8 @@ Those images are used in our Netbox project, one for each environment.
 
  netbox-image-collector is a bash script to gather all the images needed to our Netbox and saves them into a tar file which is whiten and then loaded into our Netbox virtual machine.
 
-### Images
-Currently we have 4 images we need for our Netbox:
-1. public.ecr.aws/docker/library/redis-7.0.5-alpine3.16
-2. docker.io/netboxcommunity/netbox-v3.5
-3. public.ecr.aws/docker/library/redis-7.0.5-alpine3.16
-4. public.ecr.aws/docker/library/haproxy-2.5.9-alpine3.16 (that we install postgres and bash on it).
-
 
 ### How to Run
-
 
  All you need is to run the script:
 ```
@@ -46,7 +38,6 @@ This bash script purpose is to create a `requirements.txt` file for the image.
 
 The `requirements.txt` file has all the python libraries we need for the netbox-backend flask to work.
 
-Whenever we want a new python module in our vscode environment we run this script. The script will prompt the user with what module he wants to install, and then it will run and install all the needed dependendies and will make the `requirements.txt` file with all the modules.
 
 #### How to Run
 
@@ -73,20 +64,11 @@ In order to get the tar of the image of the netbox-backend flask we need to run 
 
 ## python-dev-image-creator
 
-python-dev-image-creator contains 3 files in it:
-1. Containerfile
-2. dev-image-creator.sh
-3. download-vs-code-server.sh
-
-The only file we will update and edit is the `dev-image-creator.sh` because it has the extensions we want on our dev-netbox-backend.
-To add new extensions all you need to do it to add an extension and it tag as a `key` and the creator as a `value` into the `extensions` dictonary like that:
-```
-["vscode-pylance-2023.5.21"]="ms-python"
-```
+This project is used for creation of the flask-backend but with the addtion of vscode and the extention we want.
 
 ### How to Run
 
-This will be ran only when we add/upgrade our extensions or when we add new python libraries.
+This will be run only when we add/upgrade our extensions or when we add new python libraries.
 
 > [!IMPORTANT]
 > THIS WILL BE RUN ONLY AFTER RUNNING `prod-image-creator.sh` BECAUSE IT DEPENDS ON IT
@@ -94,8 +76,3 @@ This will be ran only when we add/upgrade our extensions or when we add new pyth
 ```
 ./dev-image-creator.sh
 ```
-
-
-
-
-
