@@ -48,8 +48,6 @@ The `requirements.txt` file has all the python libraries we need for the netbox-
 
 ### prod-image-creator.sh
 
----
-
 #### How to Run
 
 
