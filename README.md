@@ -42,9 +42,7 @@ The `requirements.txt` file has all the python libraries we need for the netbox-
 #### How to Run
 
 ```
-./requirementsfile-builder.sh
-
-Then write the exact name of the new python library we want.
+./requirementsfile-builder.sh <python_library_to_download>
 ```
 
 
