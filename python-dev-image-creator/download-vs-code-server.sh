@@ -46,7 +46,7 @@ fi
 archive="vscode-server-linux-${ARCH}.tar.gz"
 owner='microsoft'
 repo='vscode'
-version='1.78.0'
+version='1.89.0'
 commit_sha=$(get_latest_release "${owner}/${repo}" "${version}")
 
 if [ -n "${commit_sha}" ]; then
