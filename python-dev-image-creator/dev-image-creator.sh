@@ -1,18 +1,19 @@
 #!/bin/bash
 
+#### Reminder to improve this part of the code.
 declare -A extensions=(
-    ["vscode-pylance-2023.5.21"]="ms-python"
-    ["vscodeintellicode-1.2.30"]="VisualStudioExptTeam"
-    ["intellicode-api-usage-examples-0.2.7"]="VisualStudioExptTeam"
-    ["remote-containers-0.293.0"]="ms-vscode-remote"
-    ["vsc-python-indent-1.18.0"]="KevinRose"
-    ["python-2023.9.11311005"]="ms-python"
-    ["autodocstring-0.6.1"]="njpwerner"
-    ["python-extension-pack-1.7.0"]="donjayamanne"
-    ["vscode-django-1.10.0"]="batisteo"
-    ["prettier-vscode-9.12.0"]="esbenp"
-    ["jinja-0.0.8"]="wholroyd"
-    ["autopep8-2023.6.0"]="ms-python"
+    ["vscode-pylance-latest"]="ms-python"
+    ["vscodeintellicode-latest"]="VisualStudioExptTeam"
+    ["intellicode-api-usage-examples-latest"]="VisualStudioExptTeam"
+    ["remote-containers-latest"]="ms-vscode-remote"
+    ["vsc-python-indent-latest"]="KevinRose"
+    ["python-latest"]="ms-python"
+    ["autodocstring-latest"]="njpwerner"
+    ["python-extension-pack-latest"]="donjayamanne"
+    ["vscode-django-latest"]="batisteo"
+    ["prettier-vscode-latest"]="esbenp"
+    ["jinja-latest"]="wholroyd"
+    ["autopep8-latest"]="ms-python"
 )
 
 if [ ! -d "./extensions" ]; then
@@ -27,7 +28,7 @@ do
     while [ ! -f $FILE ];
     do
         publisher=${extensions[$key]}
-        key=$(echo $key | sed 's/-\([0-9]\)/\/\1/g')
+        key=$(echo $key | sed 's/-latest/\/latest/g')
         wget -nv -w 10 --random-wait --continue https://marketplace.visualstudio.com/_apis/public/gallery/publishers/$publisher/vsextensions/$key/vspackage
         key=$(echo $key | sed 's/\//-/g')
         mv vspackage ${extensions[$key]}.$key.vsix.gz
