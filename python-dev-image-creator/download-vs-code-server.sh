@@ -1,53 +1,52 @@
 #!/bin/sh
 
+# # Auto-Get the latest commit sha via command line.
+# get_latest_release() {
+#     tag=$(curl --silent "https://api.github.com/repos/${1}/releases/tags/${2}" | # Get latest release from GitHub API
+#         grep '"tag_name":'                                              | # Get tag line
+#     sed -E 's/.*"([^"]+)".*/\1/'                                    ) # Pluck JSON value
+    
+#     tag_data=$(curl --silent "https://api.github.com/repos/${1}/git/ref/tags/${tag}")
+    
+#     sha=$(echo "${tag_data}"           | # Get latest release from GitHub API
+#         grep '"sha":'                | # Get tag line
+#     sed -E 's/.*"([^"]+)".*/\1/' ) # Pluck JSON value
+    
+#     sha_type=$(echo "${tag_data}"           | # Get latest release from GitHub API
+#         grep '"type":'                    | # Get tag line
+#     sed -E 's/.*"([^"]+)".*/\1/'      ) # Pluck JSON value
+    
+#     if [ "${sha_type}" != "commit" ]; then
+#         combo_sha=$(curl -s "https://api.github.com/repos/${1}/git/tags/${sha}" | # Get latest release from GitHub API
+#             grep '"sha":'                                                     | # Get tag line
+#         sed -E 's/.*"([^"]+)".*/\1/'                                      ) # Pluck JSON value
+        
+#         # Remove the tag sha, leaving only the commit sha;
+#         # this won't work if there are ever more than 2 sha,
+#         # and use xargs to remove whitespace/newline.
+#         sha=$(echo "${combo_sha}" | sed -E "s/${sha}//" | xargs)
+#     fi
+    
+#     printf "${sha}"
+# }
+
+# commit_sha=$(get_latest_release "${owner}/${repo}" "${version}")
+# version='1.89.0'
+# owner='microsoft'
+# repo='vscode'
+
+
+##########################################################################################
+# GIL COMMENT: the vscode commit can't be dynamiclly pulled, it has to be static because
+# it has to match the vscode version we have in our environment.
+##########################################################################################
+
+
 set -e
 
-# Auto-Get the latest commit sha via command line.
-get_latest_release() {
-    tag=$(curl --silent "https://api.github.com/repos/${1}/releases/tags/${2}" | # Get latest release from GitHub API
-        grep '"tag_name":'                                              | # Get tag line
-    sed -E 's/.*"([^"]+)".*/\1/'                                    ) # Pluck JSON value
-    
-    tag_data=$(curl --silent "https://api.github.com/repos/${1}/git/ref/tags/${tag}")
-    
-    sha=$(echo "${tag_data}"           | # Get latest release from GitHub API
-        grep '"sha":'                | # Get tag line
-    sed -E 's/.*"([^"]+)".*/\1/' ) # Pluck JSON value
-    
-    sha_type=$(echo "${tag_data}"           | # Get latest release from GitHub API
-        grep '"type":'                    | # Get tag line
-    sed -E 's/.*"([^"]+)".*/\1/'      ) # Pluck JSON value
-    
-    if [ "${sha_type}" != "commit" ]; then
-        combo_sha=$(curl -s "https://api.github.com/repos/${1}/git/tags/${sha}" | # Get latest release from GitHub API
-            grep '"sha":'                                                     | # Get tag line
-        sed -E 's/.*"([^"]+)".*/\1/'                                      ) # Pluck JSON value
-        
-        # Remove the tag sha, leaving only the commit sha;
-        # this won't work if there are ever more than 2 sha,
-        # and use xargs to remove whitespace/newline.
-        sha=$(echo "${combo_sha}" | sed -E "s/${sha}//" | xargs)
-    fi
-    
-    printf "${sha}"
-}
-
 ARCH="x64"
-U_NAME=$(uname -m)
-
-if [ "${U_NAME}" = "aarch64" ]; then
-    ARCH="arm64"
-    elif [ "${U_NAME}" = "x86_64" ]; then
-    ARCH="x64"
-    elif [ "${U_NAME}" = "armv7l" ]; then
-    ARCH="armhf"
-fi
-
 archive="vscode-server-linux-${ARCH}.tar.gz"
-owner='microsoft'
-repo='vscode'
-version='1.89.0'
-commit_sha=$(get_latest_release "${owner}/${repo}" "${version}")
+commit_sha="89de5a8d4d6205e5b11647eb6a74844ca23d2573"
 
 if [ -n "${commit_sha}" ]; then
     echo "will attempt to download VS Code Server version = '${commit_sha}'"

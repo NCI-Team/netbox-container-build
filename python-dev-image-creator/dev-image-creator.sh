@@ -19,7 +19,7 @@ declare -A extensions=(
 if [ ! -d "./extensions" ]; then
     mkdir ./extensions
 fi
-cp ./download-vs-code-server.sh ./extensions
+
 cd ./extensions
 
 for key in "${!extensions[@]}"
@@ -38,5 +38,5 @@ done
 
 cd ..
 
-podman build --no-cache -t python-evn-3-11-development:latest .
-podman save -o python-evn-3-11-development_container.tar python-evn-3-11-development:latest
+podman build --no-cache -t python-env-3-development:latest .
+podman save -o python-env-3-development_container.tar python-env-3-development:latest

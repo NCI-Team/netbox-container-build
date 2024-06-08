@@ -1,9 +1,13 @@
 # Use your custom Python 3.11 environment as the base image
-FROM localhost/python-evn-3-11
+FROM localhost/python-env-3:latest
+
+RUN apt-get -y update
+RUN apt-get -y install curl git
 
 RUN mkdir /opt/vscode-server/
 
 COPY extensions /opt/vscode-server/
+COPY download-vs-code-server.sh /opt/vscode-server/
 
 WORKDIR /opt/vscode-server/
 
