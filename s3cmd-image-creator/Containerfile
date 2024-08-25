@@ -1,0 +1,3 @@
+FROM docker.io/d3fk/s3cmd:latest
+ENTRYPOINT []
+CMD ["/bin/sh"]

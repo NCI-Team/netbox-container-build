@@ -12,3 +12,9 @@ extensions
 
 snmp-generator-creator/snmp_exporter/
 snmp-generator-creator/snmp_exporter/*
+
+snmp-exporter-s3cmd.tar
+*/snmp-exporter-s3cmd.tar
+
+s3cmd-image.tar
+*/s3cmd-image.tar
