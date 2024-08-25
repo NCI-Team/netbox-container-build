@@ -9,3 +9,6 @@ python-env-3-development_container.tar
 
 extensions
 */extensions/*
+
+snmp-generator-creator/snmp_exporter/
+snmp-generator-creator/snmp_exporter/*
