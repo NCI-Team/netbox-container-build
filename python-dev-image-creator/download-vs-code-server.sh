@@ -46,7 +46,7 @@ set -e
 
 ARCH="x64"
 archive="vscode-server-linux-${ARCH}.tar.gz"
-commit_sha="89de5a8d4d6205e5b11647eb6a74844ca23d2573"
+commit_sha="38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40"
 
 if [ -n "${commit_sha}" ]; then
     echo "will attempt to download VS Code Server version = '${commit_sha}'"
