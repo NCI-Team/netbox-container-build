@@ -19,6 +19,7 @@ declare -A extensions=(
     ["vscode-peacock"]="johnpapa"
     ["codescene-vscode"]="CodeScene"
     ["vscode-markdownlint"]="DavidAnson"
+    ["ansible-vault"]="dhoeric"
 )
 
 if [ ! -d "./extensions" ]; then
