@@ -37,9 +37,6 @@ do
     while [ ! -f ./$FILE ];
     do
         publisher=${extensions[$key]}
-    
-        echo $key
-        echo $version
         wget -nv -w 10 --random-wait --continue https://marketplace.visualstudio.com/_apis/public/gallery/publishers/$publisher/vsextensions/$key/$version/vspackage
         mv vspackage $FILE
     done
