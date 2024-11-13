@@ -1,8 +1,10 @@
-FROM docker.io/library/python:slim-bullseye
+FROM docker.io/library/python:3.12-slim-bullseye
 
 COPY requirements.txt /tmp/requirements.txt
 
 RUN sed -i 's/==/>=/g' /tmp/requirements.txt
+
+RUN pip3 install --upgrade pip
 
 RUN pip3 install -r /tmp/requirements.txt --upgrade
 

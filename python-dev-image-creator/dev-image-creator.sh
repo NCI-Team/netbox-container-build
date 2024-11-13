@@ -16,8 +16,9 @@ declare -A extensions=(
     ["autopep8"]="ms-python"
     ["markdown-preview-github-styles"]="bierner"
     ["gitlens"]="eamodio"
-    ["vscode-peacock"]="johnpapa"
     ["vscode-markdownlint"]="DavidAnson"
+    ["material-icon-theme"]="PKief"
+    ["ruff"]="charliermarsh"
 )
 
 if [ ! -d "./extensions" ]; then
