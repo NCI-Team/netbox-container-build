@@ -19,6 +19,7 @@ declare -A extensions=(
     ["vscode-markdownlint"]="DavidAnson"
     ["material-icon-theme"]="PKief"
     ["ruff"]="charliermarsh"
+    ["mypy-type-checker"]="ms-python"
 )
 
 if [ ! -d "./extensions" ]; then
