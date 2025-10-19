@@ -5,28 +5,28 @@
 #     tag=$(curl --silent "https://api.github.com/repos/${1}/releases/tags/${2}" | # Get latest release from GitHub API
 #         grep '"tag_name":'                                              | # Get tag line
 #     sed -E 's/.*"([^"]+)".*/\1/'                                    ) # Pluck JSON value
-    
+
 #     tag_data=$(curl --silent "https://api.github.com/repos/${1}/git/ref/tags/${tag}")
-    
+
 #     sha=$(echo "${tag_data}"           | # Get latest release from GitHub API
 #         grep '"sha":'                | # Get tag line
 #     sed -E 's/.*"([^"]+)".*/\1/' ) # Pluck JSON value
-    
+
 #     sha_type=$(echo "${tag_data}"           | # Get latest release from GitHub API
 #         grep '"type":'                    | # Get tag line
 #     sed -E 's/.*"([^"]+)".*/\1/'      ) # Pluck JSON value
-    
+
 #     if [ "${sha_type}" != "commit" ]; then
 #         combo_sha=$(curl -s "https://api.github.com/repos/${1}/git/tags/${sha}" | # Get latest release from GitHub API
 #             grep '"sha":'                                                     | # Get tag line
 #         sed -E 's/.*"([^"]+)".*/\1/'                                      ) # Pluck JSON value
-        
+
 #         # Remove the tag sha, leaving only the commit sha;
 #         # this won't work if there are ever more than 2 sha,
 #         # and use xargs to remove whitespace/newline.
 #         sha=$(echo "${combo_sha}" | sed -E "s/${sha}//" | xargs)
 #     fi
-    
+
 #     printf "${sha}"
 # }
 
@@ -46,7 +46,8 @@ set -e
 
 ARCH="x64"
 archive="vscode-server-linux-${ARCH}.tar.gz"
-commit_sha="912bb683695358a54ae0c670461738984cbb5b95"
+commit_sha="7d842fb85a0275a4a8e4d7e040d2625abbf7f084"
+
 
 if [ -n "${commit_sha}" ]; then
     echo "will attempt to download VS Code Server version = '${commit_sha}'"
